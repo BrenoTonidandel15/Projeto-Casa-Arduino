@@ -1,0 +1,31 @@
+int sensorPresenca = 5;
+int presenca;
+int ledPresenca = 2;
+
+int sensorSom = A3;
+int som;
+void setup(){
+  Serial.begin(9600);
+  pinMode(sensorPresenca,INPUT);
+  pinMode(sensordechuva,INPUT);
+  pinMode(ledVER,OUTPUT);
+  pinMode(ledPresenca,OUTPUT);
+}
+
+void loop(){
+    som = digitalRead(sensorSom);
+    presenca = digitalRead(sensorPresenca);
+    
+    Serial.print("Sensor de Som: ");
+    Serial.print(som);
+    Serial.print("\n");
+    Serial.print("Sensor de Presenca: ");
+    Serial.print(presenca);
+    Serial.print("\n");
+    
+    if (som > 1)  // Movimento detectado
+    digitalWrite(ledPresenca, HIGH);
+  else
+    digitalWrite(ledPresenca, LOW);
+    
+  delay(500);
